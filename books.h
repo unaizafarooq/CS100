@@ -30,17 +30,25 @@ public:
     }
 
     //issue book function to update issue status on file and on array
-    void issue() {
+    void issue(string ) {
         if(issued == false)
-             issued = true;
+        {
+            issued = true;
+            time(&date_issued);
+        }
         else
             cout << "The book is unavailable for issuance. It will be available after " << date_due << endl;
     }
     //Display info --for debugging--
+    string book_name()
+    {
+        return name;
+    }    
     
 };
 
-void importbooks(string filename, Book books[]){
+int importbooks(string filename, Book books[])  //return values of books stored and outputs
+{
     string line ;
     fstream bookfile;
     int i = 0;
@@ -57,7 +65,19 @@ void importbooks(string filename, Book books[]){
             i++; //importing linearly in array
         }
         cout << "Import successfull: "<< i << " Books imported!"<<endl;
+        bookfile.close();
+        return i;
     }
     else
         cout << "Error: Could not import books.";
+        return 0;
 }
+
+void printbooks(int size, Book books[]) //outputs all books stored in array
+{
+    for(int i = 0; i <= size; i++)
+    {
+        cout << books[i].book_name() << endl;
+    }
+}
+
