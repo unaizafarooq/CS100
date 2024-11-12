@@ -2,7 +2,10 @@
 using namespace std;
 
 bool isPasswordValid(string password)
-{
+{   int numcounter=0;
+    int lowercasecounter=0;
+    int uppercasecounter=0;
+ 
     if (password.length()<12)
     {
         do 
@@ -10,13 +13,9 @@ bool isPasswordValid(string password)
             cout << "Password is invalid. Password should have at least 12 characters.";
             return false;
         }
-        while (password.length()<12)
+        while (password.length()<12);
     }
     // can remove while loop as its technically repetation and take it to main
-    
-    int numcounter=0;
-    int lowercasecounter=0;
-    int uppercasecounter=0;
 
     else
     {
@@ -25,7 +24,7 @@ bool isPasswordValid(string password)
             char currentChar= password[i];
             if(currentChar>='0' && currentChar<='9')
             {
-                numcasecounter++;
+                numcounter++;
             }
 
             else if (currentChar>='a' && currentChar<='z')
@@ -60,7 +59,6 @@ bool isPasswordValid(string password)
 
     cout << "Password is valid." << endl;
     return true; 
-
     }
 // special characters???
-}
+
